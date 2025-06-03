@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wyszukaj</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+        }
+        body {
+            background: white;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .logo {
+            font-weight: bold;
+            text-decoration: none;
+            color: black;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: black;
+        }
+        .content {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        .search-container {
+            margin-top: 30px;
+        }
+        .search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        .search-box input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            padding: 12px 24px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .search-results {
+            margin-top: 20px;
+        }
+        .result-item {
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+        .result-item h3 {
+            margin-bottom: 10px;
+        }
+        .result-item p {
+            color: #666;
+            line-height: 1.6;
+        }
+        .filters {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 4px;
+        }
+        .filter-group {
+            margin-bottom: 15px;
+        }
+        .filter-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        .filter-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/" class="logo">88</a>
+        <div class="nav-links">
+            <a href="produkty.html">Produkty</a>
+            <a href="cennik.html">Cennik</a>
+            <a href="kontakt.html">Kontakt</a>
+            <a href="o-nas.html">O nas</a>
+            <a href="koszyk.html">Koszyk</a>
+            <a href="wyszukaj.html">Wyszukaj</a>
+            <a href="login.html">Logowanie</a>
+            <a href="register.html">Rejestracja</a>
+        </div>
+    </nav>
+
+    <div class="content">
+        <h1>Wyszukiwarka</h1>
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" placeholder="Wpisz czego szukasz...">
+                <button type="submit">Szukaj</button>
+            </div>
+
+            <div class="filters">
+                <h2>Filtry</h2>
+                <div class="filter-group">
+                    <label for="category">Kategoria</label>
+                    <select id="category">
+                        <option value="">Wszystkie kategorie</option>
+                        <option value="jachty">Jachty</option>
+                        <option value="motorowki">Motorówki</option>
+                        <option value="wyposazenie">Wyposażenie</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="price">Zakres cenowy</label>
+                    <select id="price">
+                        <option value="">Wszystkie ceny</option>
+                        <option value="0-1000">0 - 1000 zł</option>
+                        <option value="1000-5000">1000 - 5000 zł</option>
+                        <option value="5000+">5000+ zł</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="search-results">
+                <div class="result-item">
+                    <h3>Przykładowy jacht</h3>
+                    <p>Luksusowy jacht z pełnym wyposażeniem, idealny na weekendowe wypady.</p>
+                </div>
+                <div class="result-item">
+                    <h3>Motorówka sportowa</h3>
+                    <p>Szybka i zwrotna motorówka, świetna do sportów wodnych.</p>
+                </div>
+                <div class="result-item">
+                    <h3>Sprzęt żeglarski</h3>
+                    <p>Profesjonalne wyposażenie żeglarskie najwyższej jakości.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

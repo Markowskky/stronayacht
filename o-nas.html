@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O nas - YachtLuxe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .header {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            color: #000;
+        }
+
+        .button {
+            background: #000;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background: #333;
+        }
+
+        .about-hero {
+            height: 400px;
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/about-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .about-hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .about-section {
+            margin-bottom: 60px;
+        }
+
+        .about-section h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .about-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .about-card i {
+            font-size: 40px;
+            color: #000;
+            margin-bottom: 20px;
+        }
+
+        .about-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .about-card p {
+            color: #666;
+        }
+
+        .team-section {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .team-member {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+
+        .team-member h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .team-member p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .footer {
+            background: white;
+            padding: 60px 0;
+            margin-top: 60px;
+            border-top: 1px solid #eee;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .footer-section p {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .footer-section ul li a:hover {
+            color: #000;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 20px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+
+            .about-hero h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">YachtLuxe</a>
+            <div class="nav-menu">
+                <a href="produkty.html" class="nav-link">Produkty</a>
+                <a href="cennik.html" class="nav-link">Cennik</a>
+                <a href="kontakt.html" class="nav-link">Kontakt</a>
+                <a href="o-nas.html" class="nav-link">O nas</a>
+                <a href="koszyk.html" class="nav-link">
+                    <i class="fas fa-shopping-cart"></i>
+                    Koszyk
+                </a>
+                <a href="login.html" class="nav-link">Logowanie</a>
+                <a href="register.html" class="button">Rejestracja</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="about-hero">
+        <h1>O nas</h1>
+    </section>
+
+    <div class="about-content">
+        <div class="about-section">
+            <h2>Nasza historia</h2>
+            <p>YachtLuxe to firma z wieloletnim doświadczeniem w branży jachtowej. Od 2010 roku specjalizujemy się w wynajmie luksusowych jachtów, motorówek i katamaranów. Nasza flota składa się z najwyższej jakości jednostek, które spełniają najwyższe standardy bezpieczeństwa i komfortu.</p>
+        </div>
+
+        <div class="about-section">
+            <h2>Dlaczego my?</h2>
+            <div class="about-grid">
+                <div class="about-card">
+                    <i class="fas fa-star"></i>
+                    <h3>Najwyższa jakość</h3>
+                    <p>Nasza flota składa się wyłącznie z najlepszych jednostek od renomowanych producentów.</p>
+                </div>
+                <div class="about-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Bezpieczeństwo</h3>
+                    <p>Wszystkie nasze jachty przechodzą regularne przeglądy techniczne i spełniają najwyższe standardy bezpieczeństwa.</p>
+                </div>
+                <div class="about-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Profesjonalna obsługa</h3>
+                    <p>Nasz zespół składa się z doświadczonych specjalistów, którzy służą pomocą na każdym etapie współpracy.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="team-section">
+            <h2>Nasz zespół</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="oskar.png" alt="CEO">
+                    <h3>Oskar Laga</h3>
+                    <p>CEO</p>
+                </div>
+                <div class="team-member">
+                    <img src="max.jpeg" alt="Manager floty">
+                    <h3>Kaksymilian Kleinert</h3>
+                    <p>Manager floty</p>
+                </div>
+                <div class="team-member">
+                    <img src="szymon.jpeg" alt="Kierownik serwisu">
+                    <h3>Szymon Dwornicki</h3>
+                    <p>Kierownik serwisu</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>O nas</h3>
+                <p>Specjalizujemy się w wynajmie luksusowych jachtów</p>
+            </div>
+            <div class="footer-section">
+                <h3>Kontakt</h3>
+                <p>Tel: +48 796 778 831</p>
+                <p>Email: marekpolata0@gmail.com</p>
+                <p>Adres: ul. Krasińskiego 8, Katowice</p>
+            </div>
+            <div class="footer-section">
+                <h3>Szybkie linki</h3>
+                <ul>
+                    <li><a href="produkty.html">Nasze jachty</a></li>
+                    <li><a href="cennik.html">Cennik</a></li>
+                    <li><a href="regulamin.html">Regulamin</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 

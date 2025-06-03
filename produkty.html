@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produkty - Wynajem Jachtów</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .header {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            color: #000;
+        }
+
+        .button {
+            background: #000;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background: #333;
+        }
+
+        .products-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 40px;
+        }
+
+        .filters {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            height: fit-content;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .filter-section {
+            margin-bottom: 30px;
+        }
+
+        .filter-section h3 {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .filter-group {
+            margin-bottom: 10px;
+        }
+
+        .filter-group label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #666;
+            cursor: pointer;
+        }
+
+        .price-range {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .price-range input {
+            width: 100px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .sort-select {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-category {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .product-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .footer {
+            background: white;
+            padding: 60px 0;
+            margin-top: 60px;
+            border-top: 1px solid #eee;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .products-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 20px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">YachtLuxe</a>
+            <div class="nav-menu">
+                <a href="produkty.html" class="nav-link">Produkty</a>
+                <a href="cennik.html" class="nav-link">Cennik</a>
+                <a href="kontakt.html" class="nav-link">Kontakt</a>
+                <a href="o-nas.html" class="nav-link">O nas</a>
+                <a href="koszyk.html" class="nav-link">
+                    <i class="fas fa-shopping-cart"></i>
+                    Koszyk
+                </a>
+                <a href="login.html" class="nav-link">Logowanie</a>
+                <a href="register.html" class="button">Rejestracja</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="products-container">
+        <aside class="filters">
+            <input type="text" class="search-input" placeholder="Szukaj...">
+
+            <div class="filter-section">
+                <h3>Kategorie</h3>
+                <div class="filter-group">
+                    <label>
+                        <input type="checkbox" name="category" value="motorowe">
+                        Motorowe
+                    </label>
+                </div>
+                <div class="filter-group">
+                    <label>
+                        <input type="checkbox" name="category" value="zaglowe">
+                        Żaglowe
+                    </label>
+                </div>
+                <div class="filter-group">
+                    <label>
+                        <input type="checkbox" name="category" value="katamarany">
+                        Katamarany
+                    </label>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h3>Cena za dzień</h3>
+                <div class="price-range">
+                    <input type="number" placeholder="Od" min="0">
+                    <span>-</span>
+                    <input type="number" placeholder="Do" min="0">
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h3>Długość</h3>
+                <div class="filter-group">
+                    <label>
+                        <input type="checkbox" name="length" value="small">
+                        Do 30 stóp
+                    </label>
+                </div>
+                <div class="filter-group">
+                    <label>
+                        <input type="checkbox" name="length" value="medium">
+                        30-45 stóp
+                    </label>
+                </div>
+                <div class="filter-group">
+                    <label>
+                        <input type="checkbox" name="length" value="large">
+                        Powyżej 45 stóp
+                    </label>
+                </div>
+            </div>
+        </aside>
+
+        <main>
+            <select class="sort-select">
+                <option value="default">Sortuj według</option>
+                <option value="price-asc">Cena: od najniższej</option>
+                <option value="price-desc">Cena: od najwyższej</option>
+                <option value="name-asc">Nazwa: A-Z</option>
+                <option value="name-desc">Nazwa: Z-A</option>
+            </select>
+
+            <div class="products-grid">
+                <!-- Przykładowy produkt 1 -->
+                <div class="product-card">
+                    <img src="2.jpeg"Yacht Deluxe 40" class="product-image">
+                    <div class="product-info">
+                        <div class="product-category">Motorowe</div>
+                        <h2 class="product-title">Yacht Deluxe 40</h2>
+                        <div class="product-price">1,500.00 zł / dzień</div>
+                        <a href="produkt.html" class="button">Zobacz szczegóły</a>
+                    </div>
+                </div>
+
+                <!-- Przykładowy produkt 2 -->
+                <div class="product-card">
+                    <img src="Unknown.jpeg" alt="Sailboat 35" class="product-image">
+                    <div class="product-info">
+                        <div class="product-category">Żaglowe</div>
+                        <h2 class="product-title">Sailboat 35</h2>
+                        <div class="product-price">800.00 zł / dzień</div>
+                        <a href="produkt.html" class="button">Zobacz szczegóły</a>
+                    </div>
+                </div>
+
+                <!-- Przykładowy produkt 3 -->
+                <div class="product-card">
+                    <img src="Luxury-yacht-Lurssen-Marguertie-for-charter-0402.jpg" alt="Catamaran 45" class="product-image">
+                    <div class="product-info">
+                        <div class="product-category">Katamarany</div>
+                        <h2 class="product-title">Catamaran 45</h2>
+                        <div class="product-price">2,000.00 zł / dzień</div>
+                        <a href="produkt.html" class="button">Zobacz szczegóły</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>O nas</h3>
+                <p>Specjalizujemy się w wynajmie luksusowych jachtów</p>
+            </div>
+            <div class="footer-section">
+                <h3>Kontakt</h3>
+                <p>Tel: +48 796 778 831</p>
+                <p>Email: marekpolata0@gmail.com</p>
+                <p>Adres: ul. Krasińskiego 8, Katowice</p>
+            </div>
+            <div class="footer-section">
+                <h3>Szybkie linki</h3>
+                <ul>
+                    <li><a href="produkty.html">Nasze jachty</a></li>
+                    <li><a href="cennik.html">Cennik</a></li>
+                    <li><a href="regulamin.html">Regulamin</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 

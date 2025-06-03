@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | YachtLuxe</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .product-container {
+            padding: 2rem 5%;
+            margin-top: 60px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .product-breadcrumb {
+            margin-bottom: 2rem;
+        }
+
+        .product-breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .product-breadcrumb span {
+            color: #666;
+            margin: 0 0.5rem;
+        }
+
+        .product-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .product-gallery {
+            position: relative;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .thumbnail-container {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            padding-bottom: 1rem;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .thumbnail:hover,
+        .thumbnail.active {
+            opacity: 1;
+        }
+
+        .product-info h1 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .product-category {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .product-price {
+            font-size: 2rem;
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        .stock-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stock-info.in-stock {
+            color: #28a745;
+        }
+
+        .stock-info.low-stock {
+            color: #ffc107;
+        }
+
+        .stock-info.out-of-stock {
+            color: #dc3545;
+        }
+
+        .add-to-cart-section {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .quantity-input {
+            width: 100px;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .add-to-cart-btn {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .add-to-cart-btn:hover {
+            background: #e0a400;
+        }
+
+        .product-description {
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .specifications {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .specifications h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .spec-item {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+
+        .spec-label {
+            color: #666;
+            font-size: 0.875rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .spec-value {
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .product-details {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <nav class="main-nav">
+            <div class="logo">
+                <a href="index.html">YachtLuxe</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Yachts</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="search.html" class="search-icon"><i class="fas fa-search"></i></a>
+                <a href="cart.html" class="cart-icon"><i class="fas fa-shopping-cart"></i></a>
+                <a href="login.html" class="login-btn">Login</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="product-container">
+        <div class="product-breadcrumb">
+            <a href="index.html">Home</a>
+            <span>/</span>
+            <a href="products.html">Yachts</a>
+            <span>/</span>
+            <span id="product-name">Loading...</span>
+        </div>
+
+        <div class="product-details">
+            <div class="product-gallery">
+                <img src="" alt="" class="main-image" id="main-image">
+                <div class="thumbnail-container" id="thumbnail-container">
+                    <!-- Thumbnails will be loaded dynamically -->
+                </div>
+            </div>
+
+            <div class="product-info">
+                <h1 id="product-title">Loading...</h1>
+                <p class="product-category" id="product-category"></p>
+                <p class="product-price" id="product-price"></p>
+                
+                <div class="stock-info" id="stock-info">
+                    <i class="fas fa-check-circle"></i>
+                    <span>In Stock</span>
+                </div>
+
+                <div class="add-to-cart-section">
+                    <input type="number" class="quantity-input" id="quantity" value="1" min="1">
+                    <button class="add-to-cart-btn" onclick="addToCart()">
+                        Add to Cart
+                    </button>
+                </div>
+
+                <div class="product-description" id="product-description">
+                    Loading description...
+                </div>
+            </div>
+        </div>
+
+        <div class="specifications">
+            <h2>Specifications</h2>
+            <div class="spec-grid" id="specifications">
+                <!-- Specifications will be loaded dynamically -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: info@yachtluxe.com</p>
+                <p>Phone: +48 123 456 789</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 YachtLuxe. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        // Get product ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+
+        // Load product details
+        async function loadProductDetails() {
+            try {
+                const response = await fetch(`/api/product.php?id=${productId}`);
+                const data = await response.json();
+                
+                // Update page title
+                document.title = `${data.name} | YachtLuxe`;
+                
+                // Update breadcrumb
+                document.getElementById('product-name').textContent = data.name;
+                
+                // Update product info
+                document.getElementById('product-title').textContent = data.name;
+                document.getElementById('product-category').textContent = data.category;
+                document.getElementById('product-price').textContent = formatPrice(data.price);
+                document.getElementById('product-description').textContent = data.description;
+                
+                // Update stock info
+                const stockInfo = document.getElementById('stock-info');
+                if (data.stock > 10) {
+                    stockInfo.className = 'stock-info in-stock';
+                    stockInfo.innerHTML = '<i class="fas fa-check-circle"></i> In Stock';
+                } else if (data.stock > 0) {
+                    stockInfo.className = 'stock-info low-stock';
+                    stockInfo.innerHTML = `<i class="fas fa-exclamation-circle"></i> Only ${data.stock} left`;
+                } else {
+                    stockInfo.className = 'stock-info out-of-stock';
+                    stockInfo.innerHTML = '<i class="fas fa-times-circle"></i> Out of Stock';
+                }
+                
+                // Update main image
+                const mainImage = document.getElementById('main-image');
+                mainImage.src = data.images[0] || '/assets/images/placeholder.jpg';
+                mainImage.alt = data.name;
+                
+                // Update thumbnails
+                const thumbnailContainer = document.getElementById('thumbnail-container');
+                thumbnailContainer.innerHTML = data.images.map((image, index) => `
+                    <img src="${image}" 
+                         alt="${data.name} - Image ${index + 1}"
+                         class="thumbnail ${index === 0 ? 'active' : ''}"
+                         onclick="changeMainImage('${image}', this)">
+                `).join('');
+                
+                // Update specifications
+                const specificationsContainer = document.getElementById('specifications');
+                specificationsContainer.innerHTML = data.specifications.map(spec => `
+                    <div class="spec-item">
+                        <div class="spec-label">${spec.name}</div>
+                        <div class="spec-value">${spec.value}</div>
+                    </div>
+                `).join('');
+                
+            } catch (error) {
+                console.error('Error loading product details:', error);
+            }
+        }
+
+        // Change main image when clicking thumbnails
+        function changeMainImage(src, thumbnail) {
+            document.getElementById('main-image').src = src;
+            document.querySelectorAll('.thumbnail').forEach(thumb => thumb.classList.remove('active'));
+            thumbnail.classList.add('active');
+        }
+
+        // Format price in PLN
+        function formatPrice(price) {
+            return new Intl.NumberFormat('pl-PL', {
+                style: 'currency',
+                currency: 'PLN'
+            }).format(price);
+        }
+
+        // Add to cart functionality
+        function addToCart() {
+            const quantity = parseInt(document.getElementById('quantity').value);
+            // This will be implemented when we create the cart functionality
+            console.log('Adding to cart:', { productId, quantity });
+        }
+
+        // Load product details when page loads
+        if (productId) {
+            loadProductDetails();
+        } else {
+            window.location.href = 'products.html';
+        }
+    </script>
+</body>
+</html> 
